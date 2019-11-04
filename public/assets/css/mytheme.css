@@ -1,0 +1,58 @@
+@media (min-width: 992px) {
+    .colmaxwidth_course_list {
+        max-width: 500px;
+    }
+    .navlogo {
+        min-width:255px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .cardnoborder {
+        border: none!important;
+        box-shadow:none!important;
+        margin-bottom: 0!important;
+    }
+
+    .list-group-fit>.list-group-item {
+        border: none;
+    }
+    .body-fluid{
+        background:#ffffff;
+    }
+
+    .vimeoembed{
+        border: none!important;
+    }
+
+    .movileview{
+        padding: 0!important;
+    }
+
+    .card-header-noborder{
+        border: none!important;
+        padding-left: 10px;
+        padding-bottom: 0;
+    }
+
+
+}
+.lang{
+    min-width: 200px!important;
+    padding: 0;
+}
+
+.lang-item{
+    padding: 4px;
+    padding-left: 10px;
+}
+
+.vimeoembed{
+    border: 1px solid #f0f1f2;
+}
+
+.movileview{
+    padding-left: 15px;
+    padding-right: 15px;
+}
