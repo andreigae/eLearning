@@ -1,42 +1,8 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+@extends('layouts.app')
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Metodo de pago | Guía para emprender</title>
+@section('title', __('Mi Progreso')." | eLearning")
 
-    <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
-    <meta name="robots" content="noindex">
-
-    <!-- Perfect Scrollbar -->
-    <link type="text/css" href="assets/vendor/perfect-scrollbar.css" rel="stylesheet">
-
-    <!-- Material Design Icons -->
-    <link type="text/css" href="assets/css/material-icons.css" rel="stylesheet">
-
-    <!-- Font Awesome Icons -->
-    <link type="text/css" href="assets/css/fontawesome.css" rel="stylesheet">
-
-    <!-- App CSS -->
-    <link type="text/css" href="assets/css/app.css" rel="stylesheet">
-
-
-</head>
-
-<body class="layout-fluid">
-
-@include('partials.default.navbar')
-
-
-<!-- Header Layout Content -->
-<div class="mdk-header-layout__content">
-
-    <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
-        <div class="mdk-drawer-layout__content page ">
-
-            <div class="container-fluid page__container p-0">
+@section('content')
                 <div class="row m-0">
 
                     <div class="col-lg container-fluid page__container">
@@ -56,40 +22,6 @@
                         </p>
                     </div>
                 </div>
-            </div>
 
-        </div>
+@endsection
 
-        @include('partials.default.sidebar')
-
-    </div>
-
-
-
-</div>
-</div>
-
-<!-- jQuery -->
-<script src="assets/vendor/jquery.min.js"></script>
-
-<!-- Bootstrap -->
-<script src="assets/vendor/popper.min.js"></script>
-<script src="assets/vendor/bootstrap.min.js"></script>
-
-<!-- Perfect Scrollbar -->
-<script src="assets/vendor/perfect-scrollbar.min.js"></script>
-
-<!-- MDK -->
-<script src="assets/vendor/dom-factory.js"></script>
-<script src="assets/vendor/material-design-kit.js"></script>
-
-<!-- App JS -->
-<script src="assets/js/app.js"></script>
-
-<!-- Highlight.js -->
-<script src="assets/js/hljs.js"></script>
-
-
-</body>
-
-</html>
