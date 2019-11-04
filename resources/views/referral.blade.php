@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('Mis Cursos')." | eLearning")
+@section('title', __('Recomienda a un amigo')." | eLearning")
 
 @section('content')
 
@@ -8,7 +8,7 @@
     <li class="breadcrumb-item"><a href="student-dashboard.html">Home</a></li>
     <li class="breadcrumb-item active">Recomienda a un amigo</li>
 </ol>
-<h1 class="h2">Recomienda a un amigo</h1>
+<h1 class="h2">{{ __('Recomienda a un amigo') }}</h1>
 
 <div class="card">
     <ul class="nav nav-tabs nav-tabs-card">
