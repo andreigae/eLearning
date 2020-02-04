@@ -2,23 +2,90 @@
 
 namespace App\Http\Controllers;
 
+use App\Course;
+use App\Lesson;
+use App\User;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
-
-    public function show($Modulo, $class )
+    public function __construct()
     {
+        $this->middleware('auth')->except('show');
+    }
+
+    public function getUserCourses()
+    {
+
+      //  $course = Course::findOrFail(1)->modules()->findOrFail(1)->lessons;
+       // dd($course);
+
+        //dd(auth()->user()->courses);
+
+        $courses=[];
+        if(auth()->check()){
+            $courses = auth()->user()->courses;
+        };
+
+
+
+
+        return view('my-programs', [
+            'courses' => $courses
+        ]);
+    }
+
+    public function show(Course $course, $module, $lesson=1 )
+    {
+
+        $allmodules = $course->modules;
+
+
+
+        $actualmodule = $course->modules()->findOrFail($module);
+
+        return ($actualmodule);
+
+        $actual =  $actualmodule->lessons()->findOrFail($lesson);
+
+
+
+        $alllessons =  $actualmodules->lessons()->findOrFail($actualmodules);
+
+        dd($actualmodules);
+
+
+        $actuallesson = $alllessons->lessons()->findOrFail($lesson);
+
+
+        dd($actuallesson->name);
+
+        //$progres = $lesson->progress()->with($module->lessons);
+auth()->user()->progress()->sync([$lesson->id => ['status' => 1, 'module_id'=>$module->id, 'course_id'=>$course->id]], false);
+
+
+        $datos2 = array (
+            [
+            "Modulo"=> 1,
+            "ModuloTitle"=>"Sección 1: Introduccion al curso",
+            ],
+             [
+            "Modulo"=> 2,
+            "ModuloTitle"=>"Sección 2: Algunas herramientas",
+            ]
+        );
 
         $datos = array(
             [
                 ["Modulo"=> 1,
                     "class"=>1,
-                    "title0" => "1",
-                    "title1" => "Introduccion",
+                    "title0" => "58",
+                    "title1" => "Desplegando y configurando Laravel en el VPS",
                     "Estado" => 1,
                     "onlyText"=>0,
-                    "videourl" => "",
+                    "VideoDriver"=>"gdrive",
+                    "videourl" => "1Q9d8dWDk9gbpRvB_bIzPP0lfHUENotgd",
                     "ShortDescription1" =>"",
                     "Description" =>
                         "Congratulations on<div>hola</div> <script>alert('holaa')</script> completing week one! As soon as you've finished watching all of the training videos in full please complete the action items below.
@@ -34,27 +101,18 @@ class CourseController extends Controller
 
                 ["Modulo"=> 1,
                     "class"=>2,
-                    "title0" => "2",
-                    "title1" => "The MVC architectural pattern",
-                    "Description" =>"",
+                    "title0" => "59",
+                    "title1" => "Acerca de Letsencrypt y acme.sh como cliente",
                     "Estado" => 1,
                     "onlyText"=>0,
+                    "VideoDriver"=>"gdrive",
+                    "videourl" => "1RxAVP39WIoczLJlvUbVEsRcM17Tglsxe",
+                    "Description" =>"",
+                    "Transcripcion" => "",
 
-                ],
-
-                ["Modulo"=> 1,  "class"=>3, "title0" => 3,"title1" => "Database Models", "Description" =>"","Estado" => 1,"onlyText"=>0],
-                ["Modulo"=> 1, "class"=>4, "title0" => 4,"title1" => "Database Access", "Description" =>"","Estado" => 1,"onlyText"=>0],
-                ["Modulo"=> 1, "class"=>5, "title0" => 5,"title1" => "Eloquent Basics", "Description" =>"","Estado" => 0,"onlyText"=>0],
-                ["Modulo"=> 1, "class"=>6,"title0" => 6,"title1" => "Take Quiz", "Description" =>"","Estado" => 1,"onlyText"=>0],
-                ["Modulo"=> 1, "class"=>7,"title0" => 7,"title1" => "Action Items", "Description" =>"", "Estado" => 0,"onlyText"=>1],
+                ]
             ]
         );
-
-        /*
-            [
-                'Modulo' => $Modulo, 'class' =>$class,
-            ],
-        */
 
         $EncontrarReg = null;
         $findModule=null;
@@ -62,18 +120,12 @@ class CourseController extends Controller
 
         foreach( $datos[0] as $clave => $valor){
 
-            if($Modulo==$valor['Modulo']){
                 $findModule=1;
-            }
-
-            if($class==$valor['class']){
                 $findClass=1;
-            }
-
 
             if($findModule and $findClass){
                 $EncontrarReg=1;
-                array_push($datos, $valor);
+                array_push($datos, $valor); //2
                 break;
             }else{
                 $EncontrarReg=0;
@@ -89,7 +141,7 @@ class CourseController extends Controller
 
         }
 
-
+        $class=1;
         $ArrayLong=count($datos[0]);
         $nextClass=$class;
         $previewsClass=$class;
@@ -103,10 +155,42 @@ class CourseController extends Controller
             $previewsClass=1;
         }
 
-        array_push($datos, ["next"=>$nextClass, "previews"=>$previewsClass]);
+        array_push($datos, ["next"=>$nextClass, "previews"=>$previewsClass]); // 2
+        array_push($datos, $datos2); // 4
+
+        // $datos[0] -> array Todas las clases
+        // $datos[1] -> clase Actual
+        // $datos[2] -> next - previews
+        // $data[3] -> array Todos los modulos
 
 
-        return view('view-course-tasks', ["data" => $datos] );
+        return view('courses.showcourse', [
+            "data" => $datos,
+            'course' => $course,
+            'module' => $module,
+            'lesson' => $lesson,
+            'progress' => auth()->user()->progress
+        ]);
 
     }
+
+
+    public function getlink($url){
+        $client = new Client(['verify' => false ]);
+        $res  = $client->get('https://googledrivelaravel.dev/get/'.$url);
+        $data = $res->getBody();
+        $data = json_decode($data);
+        return $data;
+       // idvideo
+    }
+
+
+
+
+
+
+
 }
+
+
+

@@ -2,9 +2,11 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
+use App\Course;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -36,4 +38,41 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    // LO MEJOR PARA GUARDAR / Actualizar la Contraseña
+    public function setPasswordAttribute($password){
+
+        $this->attributes['password'] = Hash::make($password);
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'assigned_roles');
+    }
+
+    public function courses()
+    {
+        // return $this->belongsToMany(Course::class, 'assigned_courses');
+        return $this->belongsToMany(Course::class, 'assigned_courses')
+                        ->withPivot([
+                            'user_id',
+                            'course_id',
+                            'progress'
+                        ])->withTimestamps();
+    }
+
+    public function progress()
+    {
+        return $this->belongsToMany(Lesson::class, 'asigned_progress')->withPivot([
+                            'user_id',
+                            'lesson_id',
+                            'status'
+                        ])->withTimestamps();
+    }
+
+
+
+
+
 }

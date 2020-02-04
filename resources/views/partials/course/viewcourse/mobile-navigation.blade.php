@@ -20,7 +20,7 @@
 
 <div class="d-flex align-items-center justify-content-center">
 
-    <h1 class="h2 m-0">{{$data[1]["title1"]}}</h1>
+    <h1 class="h2 m-0 text-center">{{$data[1]["title0"]}}. {{$data[1]["title1"]}}</h1>
 </div>
 <div class="d-flex align-items-center justify-content-center">
     <a data-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -54,13 +54,46 @@
     <div style="margin-top: 10px; margin-bottom: 5px;">
         <div class="form-group">
             <select id="custom-select" class="form-control custom-select2 form-control-lg " style="height: 50px;">
-                <option selected="true">Modulo 1</option>
-                <option value="1">Modulo 2</option>
-                <option value="2">Modulo 3</option>
-                <option value="3">Modulo 4</option>
+                @foreach ($data[3] as $clave => $valor)
+                    @if($data[1]['Modulo']==$valor['Modulo'])
+                        <option selected="true" value="{{ $valor['Modulo']}}">{{ $valor['ModuloTitle']}}</option>
+                      @else
+                        <option value="{{ $valor['Modulo']}}">{{ $valor['ModuloTitle']}}</option>
+                    @endif
+                @endforeach
             </select>
         </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     <ul class="card list-group list-group-fit">

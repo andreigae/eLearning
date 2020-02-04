@@ -1,0 +1,26 @@
+{
+  "short_name": "eLearning",
+  "name": "eLearning",
+
+  "icons": [{
+      "src": "/assets/images/ico.png",
+    "type": "image/png",
+    "sizes": "128x128"
+  }, {
+     "src": "/assets/images/ico.png",
+    "type": "image/png",
+    "sizes": "152x152"
+  }, {
+     "src": "/assets/images/ico.png",
+    "type": "image/png",
+    "sizes": "144x144"
+  }, {
+      "src": "/assets/images/ico.png",
+    "type": "image/png",
+    "sizes": "192x192"
+  }],
+  "start_url": "/?utm_source=homescreen",
+  "display": "standalone",
+  "background_color": "#0f1112",
+  "theme_color": "#0f1112"
+}

@@ -1,5 +1,9 @@
 <?php
 
+
+use App\Course;
+use App\User;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,7 +15,23 @@
 |
 */
 
-use App\Mail\TestEmail;
+Route::get('user', function(){
+    return User::find(1)->roles;
+});
+
+Route::get('course1', function(){
+    return Course::findOrFail(1)->modules()->findOrFail(1);
+});
+
+
+
+Route::get('/my-programs', 'CourseController@getUserCourses');
+Route::get('course/{course}/{module?}/{lesson?}',  'CourseController@show')->name("ShowCouseLesson");
+
+
+
+
+
 
 
 Route::get('/plantilla', function () {
@@ -22,7 +42,7 @@ Route::get('/', function () {
     return redirect('/my-programs');
 });
 
-Route::get('/login', function () {
+Route::get('/login2', function () {
     return view('login');
 });
 
@@ -61,10 +81,6 @@ Route::get('/edit-password', function () {
 
 Route::get('/set_language/{lang}', 'Controller@setLanguage')->name( 'set_language');
 
-Route::get('/my-programs', function () {
-    return view('my-programs');
-});
-
 
 Route::get('/action-plan', function () {
     return view('action-plan');
@@ -95,9 +111,20 @@ Route::get('/view-course', function () {
 });
 
 
+
+
 Route::get('/view-course/{Modulo}/{class}', 'CourseController@show')->name("ShowClass")->where(['Modulo' => '[0-9]+', 'class' =>'[0-9]+']);;
 
 Route::get('/view-course/{Modulo}', function ($Modulo ) {
     return redirect()->route('ShowClass', ['Modulo' => $Modulo, "class"=>1]);
 })->name("ShowModule");
 
+
+Route::get('/udemy', 'CourseController@showudemy');
+
+
+Route::get('getlink/{id}', 'CourseController@getlink')->name('getlink');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

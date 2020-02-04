@@ -1,7 +1,7 @@
 
 
 
-<div class="mdk-drawer js-mdk-drawer" id="default-drawer">
+<div class="mdk-drawer js-mdk-drawer" id="default-drawer" style="z-index:1000!important">
     <div class="mdk-drawer__content ">
         <div class="sidebar sidebar-left o-hidden ps ps--active-y sidebar-light" data-perfect-scrollbar>
             <div class="sidebar-p-y">

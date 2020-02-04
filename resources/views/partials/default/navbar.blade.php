@@ -10,7 +10,7 @@
             <!-- Navbar -->
 
 
-            <nav id="default-navbar" class="navbar navbar-expand navbar-dark m-0 bg-dark mdk-header--fixed" data-primary="data-primary">
+            <nav id="default-navbar" class="navbar navbar-expand navbar-dark m-0 bg-dark mdk-header--fixed" data-primary="data-primary" style="height: 58px;min-height:58px;">
                 <div class="container-fluid">
 
 
@@ -37,10 +37,85 @@
 							<span class="material-icons">menu</span>
 						</button>
 
+
+
+                        <li class="nav-item dropdown dropdown-notifications dropdown-menu-sm-full">
+                                <button class="nav-link btn-flush dropdown-toggle d-none d-md-flex" type="button" data-toggle="dropdown" data-dropdown-disable-document-scroll="" data-caret="false" aria-expanded="false">
+                                    <i class="material-icons"  style="color: #fff;">notifications</i>
+                                    <span class="badge badge-notifications badge-danger">2</span>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-left">
+                                    <div data-perfect-scrollbar="" class="position-relative ps">
+
+                                        <div class="dropdown-header"><strong>System notifications</strong></div>
+                                        <div class="list-group list-group-flush mb-0">
+
+                                            <a href="student-messages.html" class="list-group-item list-group-item-action border-left-3 border-left-danger">
+                                                <span class="d-flex align-items-center mb-1">
+                                                    <small class="text-muted">3 minutes ago</small>
+
+                                                </span>
+                                                <span class="d-flex">
+                                                    <span class="avatar avatar-xs mr-2">
+                                                        <span class="avatar-title rounded-circle bg-light">
+                                                            <i class="material-icons font-size-16pt text-danger">account_circle</i>
+                                                        </span>
+                                                    </span>
+                                                    <span class="flex d-flex flex-column">
+
+                                                        <span class="text-black-70">Your profile information has not been synced correctly.</span>
+                                                    </span>
+                                                </span>
+                                            </a>
+
+                                            <a href="student-messages.html" class="list-group-item list-group-item-action">
+                                                <span class="d-flex align-items-center mb-1">
+                                                    <small class="text-muted">5 hours ago</small>
+
+                                                </span>
+                                                <span class="d-flex">
+                                                    <span class="avatar avatar-xs mr-2">
+                                                        <span class="avatar-title rounded-circle bg-light">
+                                                            <i class="material-icons font-size-16pt text-success">group_add</i>
+                                                        </span>
+                                                    </span>
+                                                    <span class="flex d-flex flex-column">
+                                                        <strong>Adrian. D</strong>
+                                                        <span class="text-black-70">Wants to join your private group.</span>
+                                                    </span>
+                                                </span>
+                                            </a>
+
+                                            <a href="student-messages.html" class="list-group-item list-group-item-action">
+                                                <span class="d-flex align-items-center mb-1">
+                                                    <small class="text-muted">1 day ago</small>
+
+                                                </span>
+                                                <span class="d-flex">
+                                                    <span class="avatar avatar-xs mr-2">
+                                                        <span class="avatar-title rounded-circle bg-light">
+                                                            <i class="material-icons font-size-16pt text-warning">storage</i>
+                                                        </span>
+                                                    </span>
+                                                    <span class="flex d-flex flex-column">
+
+                                                        <span class="text-black-70">Your deploy was successful.</span>
+                                                    </span>
+                                                </span>
+                                            </a>
+
+                                        </div>
+                                    <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
+                                </div>
+                            </li>
+
+
+
+{{--
 						<button class="navbar-toggler d-md-none  d-lg-block " onclick="Fullscreen()" type="button">
 								<span class="material-icons" style="font-size: 28px;" id="iconFullScreen">fullscreen</span>
 								<span class="material-icons" style="font-size: 28px;display:none;" id="iconFullScreen2">fullscreen_exit</span>
-						</button>
+						</button> --}}
 
 					</div>
 
@@ -51,11 +126,12 @@
 
 
 
+
                     <!-- Menu -->
                     <ul class="nav navbar-nav flex-nowrap  d-lg-flex" >
 
                         <!-- Soporte dropdown -->
-                        <li class="nav-item dropdown dropdown-notifications dropdown-menu-sm-full" >
+                        <li class="nav-item dropdown dropdown-notifications dropdown-menu-sm" >
 
                             <button style="cursor:pointer" class="nav-link btn-flush dropdown-toggle" type="button" data-toggle="dropdown" data-dropdown-disable-document-scroll data-caret="false">
                                 <a class="nav-link dropdown-toggle"  role="button">
@@ -104,7 +180,7 @@
                         <!-- Soporte dropdown -->
                         <li class="nav-item dropdown dropdown-notifications dropdown-menu-sm-full" >
 
-                            <button style="cursor:pointer" class="nav-link btn-flush dropdown-toggle" type="button" data-toggle="dropdown" data-dropdown-disable-document-scroll data-caret="false">
+                            <button style="cursor:pointer;padding-top: 9px;padding-bottom: 9px;" class="nav-link btn-flush dropdown-toggle" type="button" data-toggle="dropdown" data-dropdown-disable-document-scroll data-caret="false">
                                 <a class="nav-link dropdown-toggle"  role="button">
                                     <span> {{__("Soporte")}} </span>
                                 </a>
@@ -136,13 +212,15 @@
 
 
                     <!-- Menu -->
-                    <ul class="nav navbar-nav flex-nowrap">
+
+                    @auth
+                      <ul class="nav navbar-nav flex-nowrap">
 
 
                         <!-- User dropdown -->
                         <li class="nav-item dropdown dropdown-account dropdown-menu-sm-full">
 
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"><img src="{{ URL::asset('assets/images/people/50/guy-6.jpg')}}" alt="Avatar" class="rounded-circle" width="40"></a>
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"><img src="{{ URL::asset(auth()->user()->avatar)}}" alt="Avatar" class="rounded-circle" width="40"></a>
 
 
                             <div class="dropdown-menu dropdown-menu-right">
@@ -161,17 +239,28 @@
                                             </span>
                                         </a>
 
-                                        <a href="/logout" class="list-group-item list-group-item-action">
-                                            <span class="d-flex">
+
+
+                                         <a class="list-group-item list-group-item-action" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                             <span class="d-flex">
                                                      <i class="material-icons material-icons-navbar">lock</i> {{__("Cerrar Sesion")}}
                                             </span>
                                         </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+
+
+
                                     </div>
                                 </div>
                             </div>
                         </li>
                         <!-- // END User dropdown -->
-
+                    @endauth
 
 
 
@@ -211,7 +300,7 @@
 
     <!-- // END Header -->
 
-
+{{--
 	<script>
 	//Full Screen
 	iconFullScreen
@@ -263,3 +352,4 @@
 	}
 
 </script>
+ --}}

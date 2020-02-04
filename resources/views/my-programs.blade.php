@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 
 @section('title', __('Mis Cursos')." | eLearning")
 
@@ -18,20 +18,25 @@
 
     <div class="row">
 
-        @php
-            $data = 1;
-        @endphp
 
+        @foreach ($courses as $course)
 
-        @for ($i=1; $i<=$data;$i++)
-            @if($data<3)
-                @include('partials.course.list.l3item-courseslist')
-            @elseif($data==3)
-                @include('partials.course.list.3item-courseslist')
-            @elseif($data>3)
-                @include('partials.course.list.m3item-courseslist')
+            @if($courses->count()<3)
+                <div class="col-md-12 col-lg-6 colmaxwidth_course_list">
+                     @include('courses.partials.myprogramscard')
+                </div>
+            @elseif($courses->count()==3)
+                <div class="col-md-12 col-lg-6 col-xl-4 colmaxwidth_course_list">
+                     @include('courses.partials.myprogramscard')
+                </div>
+            @elseif($courses->count()>3)
+                <div class="col-md-12 col-lg-6 col-xl-4 col-xxl-3 colmaxwidth_course_list ">
+                      @include('courses.partials.myprogramscard')
+                </div>
             @endif
-        @endfor
+
+        @endforeach
+
     </div>
 @endsection
 
