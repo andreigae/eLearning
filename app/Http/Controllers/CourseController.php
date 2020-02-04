@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Course;
-use App\Lesson;
 use App\User;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
@@ -36,33 +35,13 @@ class CourseController extends Controller
         ]);
     }
 
-    public function show(Course $course, $module, $lesson=1 )
+    public function show(Course $course, $module=1, $lesson=1 )
     {
-
-        $allmodules = $course->modules;
-
-
-
-        $actualmodule = $course->modules()->findOrFail($module);
-
-        return ($actualmodule);
-
-        $actual =  $actualmodule->lessons()->findOrFail($lesson);
-
-
-
-        $alllessons =  $actualmodules->lessons()->findOrFail($actualmodules);
-
-        dd($actualmodules);
-
-
-        $actuallesson = $alllessons->lessons()->findOrFail($lesson);
-
-
-        dd($actuallesson->name);
-
+        $module = $course->modules()->findOrFail($module);
+        $lesson = $module->lessons()->findOrFail($lesson);
         //$progres = $lesson->progress()->with($module->lessons);
-auth()->user()->progress()->sync([$lesson->id => ['status' => 1, 'module_id'=>$module->id, 'course_id'=>$course->id]], false);
+
+        auth()->user()->progress()->sync([$lesson->id => ['status' => 1, 'module_id'=>$module->id, 'course_id'=>$course->id]], false);
 
 
         $datos2 = array (
