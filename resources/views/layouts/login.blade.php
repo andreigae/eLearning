@@ -55,16 +55,21 @@
 
                @media (max-width: 425px) {
                     .outer {
-                     min-height: 100vh;
-                   }
-                    .outer-content {
-                     min-height: 100vh;
+
+                      display: block;
                    }
 
+                    body{
+                      background: #ffffff!important;
+                      background-image: none;
+                    }
+
                     .card {
-                     min-height: 100vh;
+                     margin:0!important;
                      margin-bottom:0!important;
                      border-radius: 0!important;
+                     border:0!important;
+                     box-shadow:none!important;
                    }
 
                    .card-header{
@@ -74,7 +79,7 @@
 
 
         </style>
-        <div class="outer" style="min-height: 100vh">
+        <div class="outer">
             <div class="col-sm-8 col-md-6 col-lg-4 outer-content" style="padding: 0 ">
                 @yield('content')
             </div>

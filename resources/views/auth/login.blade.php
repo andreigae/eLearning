@@ -14,7 +14,7 @@
             </div> --}}
 
             <div class="card" style="
-                        margin-bottom: 1.5rem;
+
                         border: none;
                         border-radius: 5px;
                 ">
