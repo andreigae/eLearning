@@ -3,6 +3,9 @@
 @section('title', __('Mejorar cuenta')." | eLearning")
 
 @section('content')
+
+<div class="container-fluid">
+
     <div class="row m-0">
         <div class="col-lg container-fluid page__container">
             <ol class="breadcrumb">
@@ -85,4 +88,6 @@
         </div>
 
     </div>
+
+</div>
 @endsection

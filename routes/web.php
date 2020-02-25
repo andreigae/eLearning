@@ -3,6 +3,7 @@
 
 use App\Course;
 use App\User;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,13 @@ use App\User;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('storage', function(){
+    return redirect(Storage::disk('minio')->temporaryUrl(
+        'courses/facebook-ads/module-1/1. Empezamos.mp4', Carbon::now()->addMinutes(30)
+    ));
+});
+
 
 Route::get('user', function(){
     return User::find(1)->roles;

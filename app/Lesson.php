@@ -12,6 +12,10 @@ class Lesson extends Model
  		return $this->belongsTo(Module::class, 'id');
  	}
 
+ 	public function files()
+    {
+        return $this->belongsToMany(File::class, 'assigned_files');
+    }
 
 
 

@@ -17,16 +17,69 @@
         <link type="text/css" href="{{ URL::asset('assets/css/material-icons.css') }}" rel="stylesheet">
 
         <!-- Font Awesome Icons -->
-        <link type="text/css" href="{{ URL::asset('assets/css/fontawesome.css') }}" rel="stylesheet">
+        <link type="text/css" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
 
         <!-- App CSS -->
         <link type="text/css" href="{{ URL::asset('assets/css/app.css') }}" rel="stylesheet">
 
     </head>
 
-    <body class="login">
+    <body class="login" style="
+    background: url('{{ URL::asset('assets/images/background.png') }}') no-repeat 0; background-size:cover">
 
-        @yield('content')
+        <style type="text/css">
+            .outer
+                {
+                   display: -ms-flexbox;
+                   display: -webkit-flex;
+                   display: flex;
+
+                   /* Center vertically */
+                   align-items: center;
+
+                   /*Center horizontaly */
+                   justify-content: center;
+
+                   /*Center horizontaly ie */
+                   -ms-flex-pack: center;
+
+                    min-height: 220px;
+                    height:100px;
+                }
+
+                 @media (min-width: 1200px) {
+                    .outer-content {
+                     max-width: 550px;
+                   }
+                }
+
+               @media (max-width: 425px) {
+                    .outer {
+                     min-height: 100vh;
+                   }
+                    .outer-content {
+                     min-height: 100vh;
+                   }
+
+                    .card {
+                     min-height: 100vh;
+                     margin-bottom:0!important;
+                     border-radius: 0!important;
+                   }
+
+                   .card-header{
+                     border-radius: 0!important;
+                   }
+                }
+
+
+        </style>
+        <div class="outer" style="min-height: 100vh">
+            <div class="col-sm-8 col-md-6 col-lg-4 outer-content" style="padding: 0 ">
+                @yield('content')
+            </div>
+        </div>
+
 
         <!-- jQuery -->
         <script src="{{ URL::asset('assets/vendor/jquery.min.js') }}"></script>

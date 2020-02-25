@@ -1,8 +1,11 @@
-@extends('layouts.app2')
+@extends('layouts.app')
 
 @section('title', __('Mis Cursos')." | eLearning")
 
 @section('content')
+
+<div class="container-fluid">
+
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">{{__("Inicio")}}</a></li>
         <li class="breadcrumb-item active">{{__("Mis Programas")}}</li>
@@ -38,6 +41,9 @@
         @endforeach
 
     </div>
+
+</div>
+
 @endsection
 
 

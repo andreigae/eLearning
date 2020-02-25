@@ -4,7 +4,7 @@
 
 
 @section('content')
-
+<div class="container-fluid">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="student-dashboard.html">Home</a></li>
                     <li class="breadcrumb-item active">Editar Cuenta</li>
@@ -141,5 +141,5 @@
 
                     </div>
                 </div>
-
+</div>
 @endsection

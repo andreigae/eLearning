@@ -1,5 +1,5 @@
 @push('styles')
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.5.5/plyr.css" />
 <style>
     @media (max-width: 768px) {
         .plyr__volume {
@@ -9,62 +9,80 @@
 </style>
 @endpush
 
-<div class="card">
+<div class="card" style="border: none!important;">
 
-        <div class="embed-responsive embed-responsive-16by9 vimeoembed" >
-            <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0" allowfullscreen=""></iframe>
+    @if($lesson->videodriver == "gdrive")
+        <div class="cardnobordervideo">
+            <video id="myVideo" preload="none"  rel="preload"   class="js-player " playsinline controls poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg">
+                <source id="mp4_src" src="https://googledrivelaravel.dev/getfiles/{{ $lesson->videourl }}"/>
+            </video>
         </div>
-
-   {{--  @if($data[1]["VideoDriver"] == "gdrive")
-
-
-        @if(isset($data[4]['udemy']))
-            <div class="cardnobordervideo">
-                <video id="myVideo2" preload="none"  rel="preload"   class="js-player " playsinline controls poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg">
-                    <source id="mp4_src" src="{{$data[4]['url']}}"/>
-                </video>
-            </div>
-        @else
-            <div class="cardnobordervideo">
-                <video id="myVideo" preload="none"  rel="preload"   class="js-player " playsinline controls poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg">
-                    <source id="mp4_src" src="https://googledrivelaravel.dev/getfiles/{{ $data[1]["videourl"] }}"/>
-                </video>
-            </div>
-
-        @endif
-
-
     @else
+       {{--  <div class="plyr__video-embed embed-responsive embed-responsive-16by9 js-player" id="player">
+            <iframe src="https://player.vimeo.com/video/97243285?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media&amp; autoplay=1 " allowfullscreen allowtransparency allow="autoplay"></iframe>
+        </div> --}}
+
+{{-- autoplay=1 --}}
+
         <div class="embed-responsive embed-responsive-16by9 vimeoembed" >
             <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0" allowfullscreen=""></iframe>
         </div>
-    @endif --}}
+    @endif
 
 
-    <div class="row d-none  d-md-flex d-lg-flex" style="padding: 10px; ">
+
+
+
+
+
+
+
+
+    {{-- <div class="row d-none  d-md-flex d-lg-flex" style="padding: 10px; ">
         <div class="col">
 
-            {{--  @if($data[1]['class']>1)
-                <a type="button" class="btn btn-dark" href="{{ URL::route('ShowClass', array('Modulo' => $data[1]['Modulo'], "class"=>$data[2]["previews"])) }}">
+             @if($lesson->position>1)
+
+             @php dd("HAY UN EROR en la Paginacion")@endphp
+                <a type="button" class="btn btn-dark" href="{{ URL::route('ShowCouseLesson', ['course'=>$course->id, 'module'=>$module->position, 'lesson'=>$lesson->position-1 ])}}">
                     <i class="material-icons mr-1">chevron_left</i> Lección Anterior
                 </a>
-            @else
-                <a type="button" class="btn btn-secondary disabled"  href="{{ URL::route('ShowClass', array('Modulo' => $data[1]['Modulo'], "class"=>1)) }}">
-                    <i class="material-icons mr-1">chevron_left</i> Lección Anterior
-                </a>
-            @endif --}}
+             @else
+                @if($module->position > $modules->first()->position)
+                    <a type="button" class="btn btn-dark" href="{{ URL::route('ShowCouseLesson', ['course'=>$course->id, 'module'=>$module->position-1, 'lesson'=>$course->modules()->findOrFail($module->position-1)->lessons()->latest('position')->first()->position ])}}">
+                        <i class="material-icons mr-1">chevron_left</i> Lección Anterior
+                    </a>
+                @else
+                    <a type="button" class="btn btn-secondary disabled"  href="#">
+                        <i class="material-icons mr-1">chevron_left</i> Lección Anterior
+                    </a>
+                @endif
+
+            @endif
 
 
         </div>
 
         <div class="col text-right">
 
-           {{-- <a type="button" class="btn btn-dark" href="{{ URL::route('ShowClass', array('Modulo' => $data[1]['Modulo'], "class"=>  $data[2]["next"])) }}">
-                Lección Siguiente  <i class="material-icons mr-1">chevron_right</i>
-            </a> --}}
+           @if($lesson->position+1>$module->lessons->count())
+                @if($course->modules()->find($module->position+1))
+                    <a type="button" class="btn btn-dark" href="{{ URL::route('ShowCouseLesson', ['course'=>$course->id, 'module'=>$module->position+1, 'lesson'=>1 ])}}">
+                        Lección Siguiente  <i class="material-icons mr-1">chevron_right</i>
+                    </a>
+                @else
+                     <a type="button" class="btn btn-primary" href="/final">
+                        Felicidades  <i class="material-icons mr-1">chevron_right</i>
+                    </a>
+                @endif
+               @else
+                <a type="button" class="btn btn-dark" href="{{ URL::route('ShowCouseLesson', ['course'=>$course->id, 'module'=>$module->position, 'lesson'=>$lesson->position+1 ])}}">
+                    Lección Siguiente  <i class="material-icons mr-1">chevron_right</i>
+                </a>
+            @endif
 
         </div>
-    </div>
+    </div> --}}
 
 
 </div>
@@ -79,7 +97,7 @@
 
 
 @push('scripts')
- <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.5.6/plyr.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.5.5/plyr.js"></script>
  <script>
 
 

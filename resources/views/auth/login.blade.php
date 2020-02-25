@@ -5,25 +5,30 @@
 
 @section('content')
 
-    <div class="d-flex align-items-center" style="min-height: 100vh">
-        <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 300px; margin-top: -30px;">
+
+
 
 
             {{-- <div class="d-flex justify-content-center mb-5 navbar-light">
                 <a href="dashboard.html" class="navbar-brand m-0">nLearning</a>
             </div> --}}
 
-            <div class="card navbar-shadow">
+            <div class="card" style="
+                        margin-bottom: 1.5rem;
+                        border: none;
+                        border-radius: 5px;
+                ">
 
-                <div class="card-header text-center">
-                    <h4 class="card-title">Iniciar Sesion</h4>
+                <div class="card-header text-center bg-dark p-3" style="border-top-left-radius: 5px;
+                border-top-right-radius: 5px;" >
+                    <h4 class="card-title  text-white">Iniciar Sesion</h4>
                     <p class="card-subtitle">Accede a tu cuenta</p>
                 </div>
                 <div class="card-body">
 
 
 
-                    <a href="student-dashboard.html" class="btn btn-light btn-block">
+                    <a href="student-dashboard.html" class="btn btn-light btn-block border-dark">
                         <span class="fab fa-google mr-2"></span>
                         Continuar con Google
                     </a>
@@ -134,8 +139,12 @@
                 -->
 
             </div>
-        </div>
-    </div>
+
+
+
+
+
+
 
 @endsection
 

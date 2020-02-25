@@ -336,6 +336,8 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 @endpush
 
 @section('content')
+
+<div class="container-fluid">
     <div class="row movileview">
         <div class="d-none d-md-block col-12" style="padding-left: 4px;">
             <ol class="breadcrumb pb-1 mb-1">
@@ -904,6 +906,8 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 
 
     </div>
+
+</div>
 @endsection
 
 

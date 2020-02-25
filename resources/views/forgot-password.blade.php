@@ -3,7 +3,7 @@
 @section('title', 'Login | eLearning')
 
 @section('content')
-
+<div class="container-fluid">
     <div class="d-flex align-items-center" style="min-height: 100vh">
         <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 300px;">
             <div class="text-center mt-5 mb-1">
@@ -49,4 +49,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection

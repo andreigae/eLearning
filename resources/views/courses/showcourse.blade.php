@@ -1,4 +1,4 @@
-@extends('layouts.app2')
+@extends('layouts.app')
 
 @section('title', __('Mis Cursos')." | eLearning")
 
@@ -10,7 +10,6 @@
             overflow: hidden;
             max-height: 450px;
          }
-
           .dropdown-trigger{
             text-overflow: ellipsis;
             max-width: 100%!important;
@@ -28,7 +27,6 @@
               color: #ffff;
 
             }
-
             .select-dropdown {
                 border:1px solid #2196f3;
                 width: 100%!important;
@@ -47,8 +45,6 @@
                 background: #2196f3!important;
             }
 
-
-
             .select-wrapper input.select-dropdown {
             position: relative;
             cursor: pointer;
@@ -58,7 +54,6 @@
             outline: none;
             height: 46px!important;
         }
-
             .select-wrapper{
                 display: inline-block;
                 width: 100%;
@@ -331,12 +326,60 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 .select-dropdown li.optgroup ~ li.optgroup-option {
   padding-left: 1rem;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+.square-box{
+    position: relative;
+    overflow: hidden;
+    background: #4679BD;
+}
+.square-box:before{
+    content: "";
+    display: block;
+    padding-top: 6%;
+
+}
+
+.square-box:after{
+    content: "";
+    display: block;
+    padding-bottom: 6%;
+}
+.square-content{
+    position:  absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    color: white;
+    text-align: center;
+}
+
+
+
+
+
+
+
 </style>
 
 @endpush
 
 @section('content')
-    <div class="row movileview">
+<div class="container-fluid horizontalw">
+    <div class="row" style="    margin-right: 0; margin-left: 0;">
+
+
         <div class="d-none d-md-block col-12" style="padding-left: 4px;">
             <ol class="breadcrumb pb-1 mb-1">
                 <li class="breadcrumb-item"><a href="student-dashboard.html">Home</a></li>
@@ -348,7 +391,6 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
         </div>
 
 
-            <div class="row movileview" >
 
 
 
@@ -359,66 +401,12 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                @include('partials.course.viewcourse.mobile-navigation')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                @include('courses.partials.mobile-navigation')
 
 
                 <div class="col-md-8 col-lg-8 col-xl-8" style="max-width: 1500px; padding: 0; margin-bottom: 30px">
 
-                    @include('partials.course.viewcourse.video-course')
+                    @include('courses.partials.video-course')
 
 
 
@@ -466,206 +454,6 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
                     </div>
 
 
-
-{{--
-                    <div class="card cardnoborder p-1">
-                        <div class="card-header card-header-noborder">
-                            <div class="media align-items-center">
-                                <div class="media-body">
-                                    <h4 class="card-title">ABOUT THIS LESSON</h4>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="card-body" style="padding-bottom: 0">
-
-                            {!!nl2br(e($data[1]["Description"])) !!}
-
-                            <p>  Congratulations on completing week one! As soon as you've finished watching all of the training videos in full please complete the action items below.
-                            </p>
-
-                            <p>  This is an "implementation program" and to get results you must do the work. Completing the worksheets and uploading them to our action items storage system keeps all of your worksheets safe in one place. We refer back to these worksheets throughout the program so we recommend you upload them.
-                            </p>
-
-
-                            <p>  A full overview of the program and the core parts we focus on to get results. This video is extremely important to understand the road ahead
-                            </p>
-
-                            <ul class="list-group" style="border:none;">
-
-                                <li class="list-group-item" style="margin-bottom:20px; border:none; background: #f0f8ff">
-                                    <div class="media">
-                                        <div class="media-body">
-                                            <b class="text-primary"> 1. Have you viewed all of week one's videos in full?</b>
-                                            <div class="text-dark" href="#">Simple yes/no question.</div>
-                                        </div>
-                                        <div class="media-right my-auto">
-                                            <a class="material-icons text-primary" href="#" style="text-decoration: none; font-size: 38px;">help</a>
-
-                                        </div>
-                                    </div>
-                                </li>
-
-
-                                <li class="list-group-item" style="margin-bottom:20px; border:none; background: #f0f8ff">
-                                    <div class="media">
-                                        <div class="media-body">
-                                            <b class="text-primary"> 2. Complete the chart of truth worksheet for your niche</b>
-                                            <div class="text-dark" href="#">Download the worksheet, complete it and then upload the pdf here</div>
-                                        </div>
-                                        <div class="media-right my-auto">
-                                            <a class="material-icons text-primary" href="#" style="text-decoration: none; font-size: 38px;">assignment</a>
-
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="list-group-item" style="margin-bottom:20px; border:none; background: #f0f8ff">
-                                    <div class="media">
-                                        <div class="media-body">
-                                            <b class="text-primary"> 3. Complete the niche definition worksheet</b>
-                                            <div class="text-dark" href="#">Download the worksheet, complete it and then upload the pdf here</div>
-                                        </div>
-                                        <div class="media-right my-auto">
-                                            <a class="material-icons text-primary" href="#" style="text-decoration: none; font-size: 38px;">assignment</a>
-
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="list-group-item" style="margin-bottom:20px; border:none; background: #f0f8ff">
-                                    <div class="media">
-                                        <div class="media-body">
-                                            <b class="text-primary"> 4. Complete the 10 smart market questions worksheet</b>
-                                            <div class="text-dark" href="#">Download the worksheet, complete it and then upload the pdf here</div>
-                                        </div>
-                                        <div class="media-right my-auto">
-                                            <a class="material-icons text-primary" href="#" style="text-decoration: none; font-size: 38px;">assignment</a>
-
-                                        </div>
-                                    </div>
-                                </li>
-
-
-
-                                <li class="list-group-item" style="margin-bottom:20px; border:none; background: #f0f8ff">
-                                    <div class="media">
-                                        <div class="media-body">
-                                            <b class="text-primary"> 5. Complete the client avatar worksheet</b>
-                                            <div class="text-dark" href="#">Download the worksheet, complete it and then upload the pdf here</div>
-                                        </div>
-                                        <div class="media-right my-auto">
-                                            <a class="material-icons text-primary" href="#" style="text-decoration: none; font-size: 38px;">assignment</a>
-
-                                        </div>
-                                    </div>
-                                </li>
-
-
-
-                                <li class="list-group-item" style="margin-bottom:20px; border:none; background: #f0f8ff">
-                                    <div class="media">
-                                        <div class="media-body">
-                                            <b class="text-primary"> 6. Complete the mvo worksheet</b>
-                                            <div class="text-dark" href="#">Download the worksheet, complete it and then upload the pdf here</div>
-                                        </div>
-                                        <div class="media-right my-auto">
-                                            <a class="material-icons text-primary" href="#" style="text-decoration: none; font-size: 38px;">assignment</a>
-
-                                        </div>
-                                    </div>
-                                </li>
-
-
-
-                                <li class="list-group-item" style="margin-bottom:20px; border:none; background: #f0f8ff">
-                                    <div class="media">
-                                        <div class="media-body">
-                                            <b class="text-primary"> 7. Complete the niche-offer-result hypothesis worksheet</b>
-                                            <div class="text-dark" href="#">Download the worksheet, complete it and then upload the pdf here</div>
-                                        </div>
-                                        <div class="media-right my-auto" >
-                                            <a class="material-icons text-primary" href="#" style="text-decoration: none; font-size: 38px;">assignment</a>
-
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="list-group-item" style="margin-bottom:20px; border:none; background: #f0f8ff">
-                                    <div class="media">
-                                        <div class="media-body">
-                                            <b class="text-primary"> 8. Complete the message-hypothesis worksheet</b>
-                                            <div class="text-dark" href="#">Download the worksheet, complete it and then upload the pdf here</div>
-                                        </div>
-                                        <div class="media-right my-auto">
-                                            <a class="material-icons text-primary" href="#" style="text-decoration: none; font-size: 38px;">assignment</a>
-
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="list-group-item" style="margin-bottom:20px; border:none; background: #f0f8ff">
-                                    <div class="media">
-                                        <div class="media-body">
-                                            <b class="text-primary"> 9. Have you joined the Facebook group?</b>
-                                            <div class="text-dark" href="#">Simple yes/no question.</div>
-                                        </div>
-                                        <div class="media-right my-auto">
-                                            <a class="material-icons text-primary" href="#" style="text-decoration: none; font-size: 38px;">help</a>
-
-                                        </div>
-                                    </div>
-                                </li>
-
-
-                                <li class="list-group-item" style="margin-bottom:20px; border:none; background: #f0f8ff">
-                                    <div class="media">
-                                        <div class="media-body">
-
-
-                                            <b class="text-primary"> 10. ¿Cómo te sientes después de haner completado tu primera semana?</b>
-                                            <div class="text-dark" href="#">Proporcione una respuesta simple de uno o dos parrafos para hacernos saber cómo te sientes a medida que avanzas.</div>
-                                        </div>
-                                        <div class="media-right my-auto">
-                                            <a class="material-icons text-primary" href="#" style="text-decoration: none; font-size: 38px;">help</a>
-
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-
-                        </div>
-
-
-
-
-                        <div class="row  d-none d-md-flex " style="padding: 1.25rem; padding-top: 0;">
-                            <div class="col">
-
-                                @if($data[1]['class']>1)
-                                    <a type="button" class="btn btn-dark" href="{{ URL::route('ShowClass', array('Modulo' => $data[1]['Modulo'], "class"=>$data[2]["previews"])) }}">
-                                        <i class="material-icons mr-1">chevron_left</i> Lección Anterior
-                                    </a>
-                                @endif
-
-
-                            </div>
-
-                            <div class="col text-right">
-
-
-
-                                <a type="button" class="btn btn-dark" href="{{ URL::route('ShowClass', array('Modulo' => $data[1]['Modulo'], "class"=>  $data[2]["next"])) }}">
-                                    Lección Siguiente  <i class="material-icons mr-1">chevron_right</i>
-                                </a>
-
-                            </div>
-                        </div>
-                    </div>
-
-
- --}}
 
 
 
@@ -740,7 +528,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
                 </div>
 
                 <div class="col-md-4 col-lg-4 col-xl-4 col-xxl d-none d-md-block">
-                    <div style="background: #000; color: #fff; border-radius: 6px;  ">
+                    <div class="square-box" style="background: #000; color: #fff; border-radius: 6px;  ">
                         <div class="card-body text-center">
                             <p>
                                 WEEK THEME
@@ -765,10 +553,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 
 
 
-{{--
-                        <div class="progress" style="height: 15px;">
-                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div> --}}
+
 
                     </div>
 
@@ -796,12 +581,12 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
                      <div class="input-field">
                         <select id="mybox" >
 
-                            @foreach ($course->modules as $item)
-                               {{--  @if($data[1]['Modulo']==$valor['Modulo'])
-                                    <option selected="true" value="{{ $valor['Modulo']}}">{{ $valor['ModuloTitle']}}</option>
-                                  @else --}}
-                                    <option value="{{ $item->id}}">{{ $item->name}}</option>
-                                {{-- @endif --}}
+                            @foreach ($course->modules as $moduleforeach)
+                                @if($moduleforeach->id == $module->id)
+                                    <option selected="true" value="{{ $moduleforeach->id}}">{{ $moduleforeach->name }}</option>
+                                  @else
+                                    <option value="{{ $moduleforeach->id}}">{{ $moduleforeach->name }}</option>
+                                 @endif
                             @endforeach
                         </select>
                       </div>
@@ -826,112 +611,75 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 
                     @endpush
 
-{{--
 
-                    <div style="margin-top: 10px; margin-bottom: 5px;">
-                        <div class="form-group">
-                            <select id="custom-select" class="form-control custom-select2 form-control-lg " style="height: 50px;">
-
-                                @foreach ($data[3] as $clave => $valor)
-                                    @if($data[1]['Modulo']==$valor['Modulo'])
-                                        <option selected="true" value="{{ $valor['Modulo']}}">{{ $valor['ModuloTitle']}}</option>
-                                      @else
-                                        <option value="{{ $valor['Modulo']}}">{{ $valor['ModuloTitle']}}</option>
-                                    @endif
-                                @endforeach
-                            </select>
-                        </div>
-                    </div> --}}
 
 
                     <!-- Lessons -->
                     <ul class="card list-group list-group-fit">
 
-                           @php
-
-
-                            $lessonsWithProgress = auth()->user()->progress;
-
-                            @endphp
-
-
                           @foreach ($module->lessons as $item)
 
+                            @if($item->id == $lesson->id)
+                              <li class="list-group-item active">
+                                  <div class="row">
+                                         <div class="media-left justify-content-center align-self-center">
+                                          <div class="text-white"> {{ $item->position }}</div>
+                                      </div>
+                                      <div class="media-body justify-content-center align-self-center">
+                                          <a class="text-white"  href="{{ URL::route('ShowCouseLesson', ['course'=>$course->id, 'module'=>$module->position, 'lesson'=>$item->position ])}}">{{ $item->name }}</a>
+                                      </div>
+                                      <div class="media-right justify-content-center align-self-center">
+
+                                        @if($progress->contains($item))
+                                            @if($progress->find($item)->pivot->status==1)
+                                               <i class="material-icons text-white">check_circle</i>
+                                            @else
+                                              <i class="material-icons text-white">radio_button_unchecked</i>
+                                            @endif
 
 
-                            <li class="list-group-item">
-                                    <div class="row">
-                                           <div class="media-left justify-content-center align-self-center">
-                                            <div class="text-dark"> {{ $item->id }}</div>
-                                        </div>
-                                        <div class="media-body justify-content-center align-self-center">
-                                            <a class="text-dark"  href="{{ URL::route('ShowClass', ['Modulo'=>1, 'class'=>1])}}">{{ $item->name }}</a>
-                                        </div>
-                                        <div class="media-right justify-content-center align-self-center">
+                                          @else
+                                            <i class="material-icons text-white">radio_button_unchecked</i>
+                                        @endif
 
-                                          @if($progress->contains($item))
-                                              @if($progress->find($item)->pivot->status==1)
-                                                 <i class="material-icons text-primary">check_circle</i>
-                                              @else
-                                                <i class="material-icons text-primary">radio_button_unchecked</i>
-                                              @endif
 
+
+                                      </div>
+                                  </div>
+                              </li>
+                            @else
+                              <li class="list-group-item ">
+                                  <div class="row">
+                                         <div class="media-left justify-content-center align-self-center">
+                                          <div class="text-dark"> {{ $item->position }}</div>
+                                      </div>
+                                      <div class="media-body justify-content-center align-self-center">
+                                          <a class="text-dark"  href="{{ URL::route('ShowCouseLesson', ['course'=>$course->id, 'module'=>$module->position, 'lesson'=>$item->position ])}}">{{ $item->name }}</a>
+                                      </div>
+                                      <div class="media-right justify-content-center align-self-center">
+
+                                        @if($progress->contains($item))
+                                            @if($progress->find($item)->pivot->status==1)
+                                               <i class="material-icons text-primary">check_circle</i>
                                             @else
                                               <i class="material-icons text-primary">radio_button_unchecked</i>
-                                          @endif
+                                            @endif
+
+                                          @else
+                                            <i class="material-icons text-primary">radio_button_unchecked</i>
+                                        @endif
 
 
 
-                                        </div>
-                                    </div>
-                                </li>
+                                      </div>
+                                  </div>
+                              </li>
+                          @endif
+
+
+
                           @endforeach
 
-
-
-                   {{--      @foreach ($data[0] as $clave => $valor)
-                            @if($data[1]['Modulo']==$valor['Modulo'] and $data[1]['class']==$valor['class'])
-                                <li class="list-group-item active">
-                                    <div class="row">
-                                        <div class="media-left justify-content-center align-self-center">
-                                            <div class="text-white">{{ $valor['title0'] }}</div>
-                                        </div>
-                                        <div class="media-body justify-content-center align-self-center">
-                                            <a class="text-white"  href="{{ URL::route('ShowClass', array('Modulo' => $valor['Modulo'], "class"=>$valor['class'])) }}">{{$valor['title1']}}</a>
-                                        </div>
-                                        <div class="media-right justify-content-center align-self-center">
-                                            @if($valor['Estado']==1)
-                                                <i class="material-icons text-white">check_circle</i>
-                                            @else
-                                                <i class="material-icons text-white">lens</i>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </li>
-
-
-
-
-                            @else
-                                <li class="list-group-item">
-                                    <div class="row">
-                                           <div class="media-left justify-content-center align-self-center">
-                                            <div class="text-dark"> {{$valor['title0']}}</div>
-                                        </div>
-                                        <div class="media-body justify-content-center align-self-center">
-                                            <a class="text-dark" href="{{ URL::route('ShowClass', array('Modulo' => $valor['Modulo'], "class"=>$valor['class'])) }}">{{$valor['title1']}}</a>
-                                        </div>
-                                        <div class="media-right justify-content-center align-self-center">
-                                            @if($valor['Estado']==0)
-                                                <i class="material-icons text-primary">radio_button_unchecked</i>
-                                            @else
-                                                <i class="material-icons text-primary">check_circle</i>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </li>
-                            @endif
-                        @endforeach --}}
 
 
 
@@ -957,35 +705,25 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
                             </div>
 
                             <ul class="list-group list-group-fit">
-                                <li class="list-group-item">
-                                    <div class="media">
 
-                                        <div class="media-left">
-                                            <i  class="fa fa-cloud-download" aria-hidden="true"></i>
-                                        </div>
+                                @foreach($files as $file)
+                                  <li class="list-group-item">
+                                      <div class="media">
 
-                                        <div class="media-body">
-                                            <a href="https://00e9e64bacadb04ec15ed20f13ae84bb8263b84842ea916aa3-apidata.googleusercontent.com/download/drive/v3/files/1L9daSK82la6RJor-2_MeDXCsVDIuunnK?qk=AD5uMEu_-y2yvbZSH-XgaIkkhdEipOxkONom85LcpoVSzQAC7dNQcPIMEIl1-jb0chk6tq8MtJUf8kSbzxtgoKMkW7_LB0wm3D2GOjwIY9yAFaGfDR36CPGAC5dKPZmzo7PotZ1IbMv6VCdnFXsciTHaZh8AsQNJRNY5IqCmGSbOIB3zbGF04g8HjuA_wSK6eHomOB8U0yjmvvdiclTyg6O0pUrqLenIf943KumETQXgoL7-hNqfxs6r1Sw-zfMWMKRjI-0ybhDOC1sNqXB8L-b6FdPkAVM8Je_HVkHceKokszKUOQ7OPYVPA0YOGZ9r5APGiIzm6eA31WpPCQfMt1vi-Ou85QrixGPl2n-mufmTfPcB8HpXr5cRje9LY43K_NrEgXrNfpqiG-i6v7J6b_0xE1vFGZtDZ6U7x5AjZe53YAAAWDM2beXX2GsWpE_DkWV9mIVcwbWQm_Ts-dPLe7UjOCDaPq1oDEyCVQbKHcL5yfD4CVJ7e6rOXtwA0V5sQDUK54vDFY_T9EfMeeuxeVWJJ4_4iBKLdlp-MDiohldtPpCjG9UvNr7qn9FHnOkDHreWHKfw9SqsBlZSUIuI6PLiYB8oqTzPEMx4Ynb8himKmiXxubF30TVfB5BN3Lz6OfxQJ-IxBGY9gJbRYzxW0I4s-5bm9vffHfqjAekPf2s56HfV365I9_6JpCOgox4UXtucIS4YvPKVdnDQzc4aUB82qht7UDfsv0D8iXjn9SDfT7xBSXqE1cUqo6QRe_ft5tCxtO5BMSSFl2i8F1jTZ1mkAVi7yS-kMjPaE_vrXEdejhPvMaNLh7mM8nM_ZkrrsFkMBhYD8qZ1DX9K00TxTUfjWBHXCLJMjsIRG_ec303O98Z1bNGaByoNR8lYn9EUjs_Ci5jrLR3pTe-mSS3wqwMZhgc81at65e6klo-F7gx8yJ-kWmtH9DNKHLwqatemEx7ePh5MdSQDyWZhf7wMs3XYSQ8jc5cKzQ" style="color: #000"> 1. The MVC architectural pattern</a>
-                                        </div>
+                                          <div class="media-left">
+                                              <i  class="fa fa-cloud-download" aria-hidden="true"></i>
+                                          </div>
 
-
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="media">
-
-                                        <div class="media-left">
-                                            <i  class="fa fa-cloud-download" aria-hidden="true"></i>
-                                        </div>
-
-                                        <div class="media-body">
-                                            <a href="#" style="color: #000"> 2. The MVC architectural pattern</a>
-                                        </div>
+                                          <div class="media-body">
+                                              <a target="_blank" href=" {{ URL::asset($file->path) }}" style="color: #000"> {{ $file->name }}</a>
+                                          </div>
 
 
+                                      </div>
+                                  </li>
+                                @endforeach
 
-                                    </div>
-                                </li>
+
 
                             </ul>
 
@@ -993,18 +731,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
                         </div>
                     </div>
 
-
-
-
-
-
                 </div>
-
-
-
-
-
-            </div>
 
 
 
@@ -1014,6 +741,8 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 
 
     </div>
+</div>
+
 @endsection
 
 
@@ -1021,7 +750,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 
 
 @section('footer')
-    @include('partials.course.viewcourse.mobile-navigation-footer')
+    @include('courses.partials..mobile-navigation-footer')
 @endsection
 
 
@@ -1076,7 +805,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
         };
 
         $.ajax({
-            url: '{{ route('getlink',  $data[1]["videourl"] )}}',
+            url: " {{ route('getlink',  "$lesson->videourl" )}}",
             success: function(data) {
                 document.getElementById("mp4_src").src = data;
                 myvideo.autoplay = false;
@@ -1084,7 +813,6 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
                 if(playasked==1){
                      myvideo.play();
                 }
-
             },
             error: function() {
                 console.log("No se ha podido obtener la información");

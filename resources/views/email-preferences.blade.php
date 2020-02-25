@@ -3,7 +3,7 @@
 @section('title', 'Preferencias de Email | eLearning')
 
 @section('content')
-
+<div class="container-fluid">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="student-dashboard.html">Home</a></li>
         <li class="breadcrumb-item active">Edit Account</li>
@@ -69,7 +69,7 @@
 
         </div>
     </div>
-
+</div>
 @endsection
 
 

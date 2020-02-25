@@ -3,6 +3,7 @@
 @section('title', __('Recomienda a un amigo')." | eLearning")
 
 @section('content')
+<div class="container-fluid">
 
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="student-dashboard.html">Home</a></li>
@@ -434,6 +435,9 @@ Este programa cambió mi vida y sé que tambien puede hacer lo mismo por ti.
 
 
     </div>
+</div>
+
+
 </div>
 
 @endsection

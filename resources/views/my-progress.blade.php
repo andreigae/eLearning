@@ -3,6 +3,7 @@
 @section('title', __('Mi Progreso')." | eLearning")
 
 @section('content')
+<div class="container-fluid">
                 <div class="row m-0">
 
                     <div class="col-lg container-fluid page__container">
@@ -22,6 +23,6 @@
                         </p>
                     </div>
                 </div>
-
+</div>
 @endsection
 

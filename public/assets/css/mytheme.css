@@ -10,8 +10,11 @@
         min-width:255px;
     }
 }
-@media (max-width: 768px) {
-
+@media (max-width: 760px) {
+ .horizontalw {
+    padding-right: 0!important;
+    padding-left: 0!important;
+}
     .plyr__controls__item .plyr__volume {
         display: none!important;
     }
@@ -23,6 +26,7 @@
     }
 
     .cardnobordervideo {
+        margin-left: -2px!important;
         margin-bottom: 0!important;
         box-shadow:none!important;
         border-left: none!important;
@@ -95,6 +99,9 @@
 }
 
 
+.horizontalw{
+    max-width: 2100px;
+}
 
 
 body {

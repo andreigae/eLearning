@@ -42,7 +42,7 @@
                         <li class="nav-item dropdown dropdown-notifications dropdown-menu-sm-full">
                                 <button class="nav-link btn-flush dropdown-toggle d-none d-md-flex" type="button" data-toggle="dropdown" data-dropdown-disable-document-scroll="" data-caret="false" aria-expanded="false">
                                     <i class="material-icons"  style="color: #fff;">notifications</i>
-                                    <span class="badge badge-notifications badge-danger">2</span>
+                                    <span class="badge badge-notifications badge-danger" style="height: 16px;">2</span>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-left">
                                     <div data-perfect-scrollbar="" class="position-relative ps">

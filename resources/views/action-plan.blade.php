@@ -4,7 +4,7 @@
 
 
 @section('content')
-
+<div class="container-fluid">
     <div class="row">
         <div class="col">
             <div class="card border-left-3 border-left-info">
@@ -77,5 +77,6 @@
             </div>
         </div>
     </div>
+</div>
 @endsection
 

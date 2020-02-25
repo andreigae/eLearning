@@ -17,6 +17,7 @@ class CreateModulesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('course_id')->unsigned();
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+            $table->bigInteger('position')->unsigned();
             $table->string('name');
             $table->timestamps();
         });
