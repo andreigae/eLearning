@@ -25,7 +25,7 @@
     </head>
 
     <body class="login" style="
-    background: url('{{ URL::asset('assets/images/background.png') }}') no-repeat 0; background-size:cover">
+    background: url('{{ URL::asset('assets/images/background.png') }}') no-repeat 0; background-size:cover; background-color: #000;">
 
         <style type="text/css">
             .outer
@@ -43,7 +43,7 @@
                    /*Center horizontaly ie */
                    -ms-flex-pack: center;
 
-                    min-height: 220px;
+                    min-height: 100%;
                     height:100px;
                 }
 
@@ -53,9 +53,8 @@
                    }
                 }
 
-               @media (max-width: 425px) {
+               @media (max-width: 578px) {
                     .outer {
-
                       display: block;
                    }
 
@@ -77,10 +76,45 @@
                    }
                 }
 
+                  @media screen and (max-height: 550px) and (min-width: 578px){
+                    .outer {
+                      display: block;
+                      margin:auto;
+                      min-width: 450px;
+                      padding-top: 10px;
+                     }
+                  }
+
+                  @media screen and (max-height: 550px) and (max-width: 578px)  {
+                   .outer {
+                      display: block;
+                   }
+                   .col-md-6{
+                    flex: 0 0 100%;
+                        max-width: 100%;
+                    }
+                    body{
+                      background: #ffffff!important;
+                      background-image: none;
+                    }
+                    .card {
+                     margin:0!important;
+                     margin-bottom:0!important;
+                     border-radius: 0!important;
+                     border:0!important;
+                     box-shadow:none!important;
+                   }
+
+                   .card-header{
+                     border-radius: 0!important;
+                   }
+                }
+
+
 
         </style>
         <div class="outer">
-            <div class="col-sm-8 col-md-6 col-lg-4 outer-content" style="padding: 0 ">
+            <div class="col-sm-8 col-md-6 col-lg-4 outer-content" style="padding: 0; margin: auto">
                 @yield('content')
             </div>
         </div>
