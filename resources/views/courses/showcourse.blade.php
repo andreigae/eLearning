@@ -394,7 +394,12 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 
   .sidebar-menu-button {
     font-size: 17px;
-}
+  }
+
+  .vjs-menu-content{
+      min-width: 45px!important;
+      overflow-y: hidden!important;
+  }
 
 
 </style>

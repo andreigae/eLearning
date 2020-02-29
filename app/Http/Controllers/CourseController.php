@@ -88,6 +88,46 @@ class CourseController extends Controller
              $urlVideo=null;
         }
 
+
+
+        // --- PAGINACION ---
+
+        // BACK
+         $first = false;
+         if($Current_Lesson->position>1){
+            // Esta no es la primera clase del modulo, pudo ir hacia atras
+            $PaginaAnterior = ['course'=>$UserCourse->id, 'module'=>$Current_Module->position, 'lesson'=>$Current_Lesson->position-1 ];
+         }else{
+            // Esta ES LA PRIMERA CLASE DEL MODULO, hay que comprobar si se trata del pimer modulo o es otro
+            if($Current_Module->position == $UserCourse->modules()->where('position', 1)->firstOrFail()->position){
+                // ESTA CLASE PERTENECE AL PRIMER MODULO, del curso, BLOQUEAR BACK BOTON
+                $PaginaAnterior = ['course'=>$course->id, 'module'=>1, 'lesson'=>1 ];
+                $first = true;
+            }else{
+                // ESTA CLASE NO PERTENECE al primer modulo, PERO SI ES LA PRIMERA DEL MODULO, Hay que regresar al modulo anterior y su correspondiente ultima clase
+                $PaginaAnterior = ['course'=>$UserCourse->id, 'module'=>$Current_Module->position-1, 'lesson'=>$UserCourse->modules()->where('position', ($Current_Module->position-1))->firstOrFail()->lessons()->latest('position')->first()->position];
+            }
+         }
+
+
+        // NEXT
+        $latest = false;
+        if($Current_Lesson->position+1>$Current_Module->lessons->count()){
+                if($UserCourse->modules()->where('position', ($Current_Module->position+1))->first()){
+                    // IR AL MODULO SIGUIENTE
+                    $PaginaSiguiente = ['course'=>$UserCourse->id, 'module'=>$Current_Module->position+1, 'lesson'=>1];
+                }else{
+                    // NO HAY MAS MODULOS, El Curso se ha acabado
+                    $PaginaSiguiente = ['course'=>$UserCourse->id, 'module'=>1, 'lesson'=>1 ];
+                    $latest = true;
+                }
+           }else{
+            // aun quedan lecciones en el modulo, IR A LA SIGUIENTE CLASE
+             $PaginaSiguiente = ['course'=>$UserCourse->id, 'module'=>$Current_Module->position, 'lesson'=>$Current_Lesson->position+1 ];
+         }
+
+
+
         return view('courses.showcourse', [
             'course' => $UserCourse,
             'modules' => $Current_Course_All_modules,
@@ -98,8 +138,10 @@ class CourseController extends Controller
             'videopreview' => $videopreview,
             'files' => $Current_lesson_files,
             'progress' => auth()->user()->progress,
-            'PaginaAnterior' => '',
-            'PaginaSiguiente' => ''
+            'PaginaAnterior' => $PaginaAnterior,
+            'PaginaSiguiente' => $PaginaSiguiente,
+            'first' => $first,
+            'latest' => $latest
         ]);
 
     }
