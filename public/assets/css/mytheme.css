@@ -120,3 +120,6 @@ body {
   padding-top: 0!important;
 }
 
+.card-title > a {
+    color: rgba(0, 0, 0, 0.92);
+}

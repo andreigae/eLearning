@@ -42,7 +42,6 @@ class UsersTableSeeder extends Seeder
         ]);
         $user1->roles()->save($role1);
         $user1->courses()->save(Course::find(1));
-        $user1->courses()->save(Course::find(2));
 
         $user2 =User::create([
             'name' => 'Adin',

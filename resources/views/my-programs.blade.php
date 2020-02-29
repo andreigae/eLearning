@@ -28,17 +28,29 @@
                 <div class="col-md-12 col-lg-6 colmaxwidth_course_list">
                      @include('courses.partials.myprogramscard')
                 </div>
-            @elseif($courses->count()==3)
+            @elseif($courses->count()>=3)
                 <div class="col-md-12 col-lg-6 col-xl-4 colmaxwidth_course_list">
                      @include('courses.partials.myprogramscard')
-                </div>
-            @elseif($courses->count()>3)
-                <div class="col-md-12 col-lg-6 col-xl-4 col-xxl-3 colmaxwidth_course_list ">
-                      @include('courses.partials.myprogramscard')
                 </div>
             @endif
 
         @endforeach
+
+{{-- FOR COLUMNS COURSES --}}
+{{--
+         @foreach ($courses as $course)
+
+            @if($courses->count()<3)
+                <div class="col-md-12 col-lg-6 colmaxwidth_course_list">
+                     @include('courses.partials.myprogramscard')
+                </div>
+            @elseif($courses->count()>=3)
+                <div class="col-md-12 col-lg-6 col-xl-4 colmaxwidth_course_list">
+                     @include('courses.partials.myprogramscard')
+                </div>
+            @endif
+
+        @endforeach --}}
 
     </div>
 

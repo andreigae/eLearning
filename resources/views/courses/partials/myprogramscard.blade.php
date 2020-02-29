@@ -4,7 +4,7 @@
 
     </a>
     <div class="card-header text-center">
-        <h4 class="card-title mb-0"><a href="/view-course/1">{{ $course->name}}</a></h4>
+        <h4 class="card-title mb-0"><a href="{{ route('ShowCouseLesson', ['course'=>$course->id]) }}">{{ $course->name}}</a></h4>
 
         <small>{{ $course->pivot->progress }}% {{__("Completado")}}</small>
         <div class="progress" style="height: 15px;">

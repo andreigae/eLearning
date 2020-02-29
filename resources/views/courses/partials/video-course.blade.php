@@ -142,7 +142,7 @@
                     controls
                     preload="auto"
                     poster="{{ $videopreview }}"
-                    data-setup='{ "playbackRates": [0.50,0.75, 1, 1.25, 1.50, 1.75, 2] }'
+                    data-setup='{ "playbackRates": [0.5,0.7, 1, 1.2, 1.5, 1.7, 2] }'
                 >
                 <source src="{{ $videourl }}" type="video/mp4" />
                 <p class="vjs-no-js">

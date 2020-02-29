@@ -373,21 +373,28 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 
 
 
-
+.select-wrapper input.select-dropdown {
+  font-size: 17px!important;
+}
 
 
 
 
 
   h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5{
-    font-family: Sagona-Medium,Georgia,serif;
+    font-family: serif;
     line-height: 1;
   }
 
   body{
-    font-family: Sagona-Medium,Georgia,serif;
+    font-family: serif;
+    font-size: 1em;
+    /*font-family: Sagona-Medium,Georgia,serif;*/
   }
 
+  .sidebar-menu-button {
+    font-size: 17px;
+}
 
 
 </style>
