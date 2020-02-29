@@ -8,6 +8,9 @@ use App\User;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
+
 class CourseController extends Controller
 {
     public function __construct()
@@ -17,10 +20,10 @@ class CourseController extends Controller
 
     public function getUserCourses()
     {
-        $courses=[];
-        if(auth()->check()){
-            $courses = auth()->user()->courses;
-        };
+        $courses = auth()->user()->courses;
+        foreach($courses as $course){
+          $course->image  = Storage::disk('miniopublic')->url($course->image);
+        }
 
         return view('my-programs', [
             'courses' => $courses
@@ -30,8 +33,8 @@ class CourseController extends Controller
     public function show(Course $course, $module=1, $lesson=1 )
     {
         /** ESTE CODIGO FUNCIONA PERO ESTA BIEN ESTRUCTURADO!! ??? **/
-        $UserCourses = auth()->user()->courses()->findOrFail($course);
-        $Current_Course_All_modules = $UserCourses->modules;
+        $UserCourse = auth()->user()->courses()->findOrFail($course);
+        $Current_Course_All_modules = $UserCourse->modules;
         $Current_Module =  $course->modules()->where('position', $module)->firstOrFail();
         $Module_LessonsDATA = Lesson::where("module_id", $Current_Module->id );
         $Module_Lessons=[];
@@ -53,14 +56,46 @@ class CourseController extends Controller
 
 
 
+        // $urlVideo = Storage::disk('minio')->temporaryUrl(
+        //     'courses/vps-server/resource-00/introduction.mp4', Carbon::now()->addMinutes(30)
+        // );
 
+        // $videopreview = Storage::disk('minio')->temporaryUrl(
+        //     'courses/vps-server/resource-00/vps-server.jpg', Carbon::now()->addMinutes(30)
+        // );
+
+
+
+        // $urlVideo = Storage::disk('miniopublic')->url('courses/facebook-ads/introduction/intro.mp4');
+
+
+
+        if(  $Current_Lesson->videopreview!=null){
+            $videopreview = Storage::disk('minio')->temporaryUrl(
+                $Current_Lesson->videopreview, Carbon::now()->addMinutes(30)
+            );
+
+        }else{
+            $videopreview=null;
+        }
+
+
+        if(  $Current_Lesson->videourl!=null){
+         $urlVideo = Storage::disk('minio')->temporaryUrl(
+             $Current_Lesson->videourl, Carbon::now()->addMinutes(30)
+         );
+        }else{
+             $urlVideo=null;
+        }
 
         return view('courses.showcourse', [
-            'course' => $UserCourses,
+            'course' => $UserCourse,
             'modules' => $Current_Course_All_modules,
             'module' => $Current_Module,
             'lessons' => $Module_Lessons,
             'lesson' => $Current_Lesson,
+            'videourl' => $urlVideo,
+            'videopreview' => $videopreview,
             'files' => $Current_lesson_files,
             'progress' => auth()->user()->progress,
             'PaginaAnterior' => '',

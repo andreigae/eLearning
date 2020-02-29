@@ -1,35 +1,34 @@
 
-<div class="col-md-4 d-xs-block d-md-none ">
+<div class="col-md-4 d-xs-block d-md-none" style="margin-top: -10px;">
 
 <div class="d-flex align-items-center justify-content-center">
 
     @if($progress->contains($lesson))
         @if($progress->find($lesson)->pivot->status==1)
-           <i class="material-icons text-primary " style="font-size: 50px; padding-bottom: 20px;">check_circle</i>
+           <i class="material-icons text-primary " style="font-size: 40px; padding-bottom: 10px; margin-top: 0px">check_circle</i>
         @else
-          <i class="material-icons text-primary " style="font-size: 50px; padding-bottom: 20px;">radio_button_unchecked</i>
+          <i class="material-icons text-primary " style="font-size: 40px; padding-bottom: 10px;">radio_button_unchecked</i>
         @endif
 
       @else
-        <i class="material-icons text-primary " style="font-size: 50px; padding-bottom: 20px;">radio_button_unchecked</i>
+        <i class="material-icons text-primary " style="font-size: 40px; padding-bottom: 10px;">radio_button_unchecked</i>
     @endif
 
 </div>
 
-<div class="d-flex align-items-center justify-content-center">
-    <ol class="breadcrumb m-0 d-flex align-items-center justify-content-center">
-        <li class="breadcrumb-item"><a href="/">Inicio</a></li>
-        <li class="breadcrumb-item"><a href="/my-programs">Courses</a></li>
-        <li class="breadcrumb-item"><a href="{{ URL::route('ShowCouseLesson', ['course'=>$course->id])}}">{{ $course->name}}</a> </li>
-        <li class="breadcrumb-item active">{{ $module->name}}</li>
+<div class="d-flex align-items-center justify-content-center ">
+    <ol class="breadcrumb m-0 d-flex align-items-center justify-content-center text-center">
+
+        <li class="breadcrumb-item text-dark">{{ $course->name}} / {{ $module->name}} </li>
+
     </ol>
 </div>
 
-<div class="d-flex align-items-center justify-content-center">
-    <h1 class="h2 m-0 text-center">{{$lesson->position}} . {{$lesson->name}}</h1>
+<div class="d-flex align-items-center justify-content-center mt-3">
+    <h1 class="h2 m-0 text-center">{{$lesson->name}}</h1>
 </div>
-<div class="d-flex align-items-center justify-content-center">
-    <a data-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapseExample">
+<div class="d-flex align-items-center justify-content-center mt-2">
+    <a  class="text-dark " data-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapseExample">
         <i class="fas fa-chevron-down" id="keymobilenavbar"  style="font-size: 25px;"></i>
     </a>
 </div>
@@ -78,9 +77,7 @@
         @if($item->id == $lesson->id)
           <li class="list-group-item active">
               <div class="row">
-                     <div class="media-left justify-content-center align-self-center">
-                      <div class="text-white"> {{ $item->position }}</div>
-                  </div>
+
                   <div class="media-body justify-content-center align-self-center">
                       <a class="text-white"  href="{{ URL::route('ShowCouseLesson', ['course'=>$course->id, 'module'=>$module->position, 'lesson'=>$item->position ])}}">{{ $item->name }}</a>
                   </div>
@@ -106,9 +103,7 @@
         @else
           <li class="list-group-item ">
               <div class="row">
-                     <div class="media-left justify-content-center align-self-center">
-                      <div class="text-dark"> {{ $item->position }}</div>
-                  </div>
+
                   <div class="media-body justify-content-center align-self-center">
                       <a class="text-dark"  href="{{ URL::route('ShowCouseLesson', ['course'=>$course->id, 'module'=>$module->position, 'lesson'=>$item->position ])}}">{{ $item->name }}</a>
                   </div>

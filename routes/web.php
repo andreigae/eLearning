@@ -1,9 +1,7 @@
 <?php
 
-
 use App\Course;
 use App\User;
-use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,29 +14,30 @@ use Carbon\Carbon;
 |
 */
 
-Route::get('storage', function(){
-    return redirect(Storage::disk('minio')->temporaryUrl(
-        'courses/facebook-ads/module-1/1. Empezamos.mp4', Carbon::now()->addMinutes(30)
-    ));
-});
 
+Route::get('/test1', function () {
+    return view('courses.videotest');
+});
 
 Route::get('user', function(){
-    return User::find(1)->roles;
+    return User::find(3)->roles;
 });
+
 
 Route::get('course1', function(){
     return Course::findOrFail(1)->modules()->findOrFail(1);
 });
 
+Route::get('test', function(){
+ return "Esto Funciona";
+});
 
 
 Route::get('/my-programs', 'CourseController@getUserCourses');
+
+
 Route::get('course/{course}/{module?}/{lesson?}',  'CourseController@show')->name("ShowCouseLesson");
-
-
-
-
+Route::get('getcourseimg/{course}',  'CourseController@getUserCourseImage')->name("GetCourseImg");
 
 
 

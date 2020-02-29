@@ -17,6 +17,7 @@ class CreateCoursesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('image');
+            $table->string('videointro')->nullable();
             $table->string('display_name')->nullable();  // Administrador del sitio
             $table->text('description')->nullable(); // Diferencia entre string y text, text aprox 20.000 carct, string 255 caracteres
             $table->timestamps();

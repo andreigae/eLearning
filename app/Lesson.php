@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Lesson extends Model
 {
     public function module()
-	{
- 		return $this->belongsTo(Module::class, 'id');
+	{ 
+ 		return $this->belongsTo(Module::class, 'id'); 
  	}
 
  	public function files()

@@ -30,7 +30,7 @@
 
                     <a href="student-dashboard.html" class="btn btn-light btn-block border-dark">
                         <span class="fab fa-google mr-2"></span>
-                        Continuar con Google
+                        Iniciar sesion con Google
                     </a>
 
                     <div class="page-separator">

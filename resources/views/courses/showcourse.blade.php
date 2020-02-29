@@ -8,7 +8,7 @@
     <style>
          .select-dropdown{
             overflow: hidden;
-            max-height: 450px;
+            max-height: 350px;
          }
           .dropdown-trigger{
             text-overflow: ellipsis;
@@ -371,6 +371,25 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 
 
 
+
+
+
+
+
+
+
+
+  h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5{
+    font-family: Sagona-Medium,Georgia,serif;
+    line-height: 1;
+  }
+
+  body{
+    font-family: Sagona-Medium,Georgia,serif;
+  }
+
+
+
 </style>
 
 @endpush
@@ -422,7 +441,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
                                 </div>
                             </div>
 
-                            <ul class="list-group list-group-fit">
+                            <ul class="list-group list-group-fit mb-0">
                                 <li class="list-group-item">
                                     <div class="media">
 
@@ -622,13 +641,12 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
                             @if($item->id == $lesson->id)
                               <li class="list-group-item active">
                                   <div class="row">
-                                         <div class="media-left justify-content-center align-self-center">
-                                          <div class="text-white"> {{ $item->position }}</div>
-                                      </div>
+
                                       <div class="media-body justify-content-center align-self-center">
                                           <a class="text-white"  href="{{ URL::route('ShowCouseLesson', ['course'=>$course->id, 'module'=>$module->position, 'lesson'=>$item->position ])}}">{{ $item->name }}</a>
                                       </div>
                                       <div class="media-right justify-content-center align-self-center">
+
 
                                         @if($progress->contains($item))
                                             @if($progress->find($item)->pivot->status==1)
@@ -650,9 +668,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
                             @else
                               <li class="list-group-item ">
                                   <div class="row">
-                                         <div class="media-left justify-content-center align-self-center">
-                                          <div class="text-dark"> {{ $item->position }}</div>
-                                      </div>
+
                                       <div class="media-body justify-content-center align-self-center">
                                           <a class="text-dark"  href="{{ URL::route('ShowCouseLesson', ['course'=>$course->id, 'module'=>$module->position, 'lesson'=>$item->position ])}}">{{ $item->name }}</a>
                                       </div>
@@ -704,7 +720,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
                                 </div>
                             </div>
 
-                            <ul class="list-group list-group-fit">
+                            <ul class="list-group list-group-fit  mb-0">
 
                                 @foreach($files as $file)
                                   <li class="list-group-item">

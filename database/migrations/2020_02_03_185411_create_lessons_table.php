@@ -19,9 +19,11 @@ class CreateLessonsTable extends Migration
             $table->foreign('module_id')->references('id')->on('modules')->onDelete('cascade');
             $table->bigInteger('position')->unsigned();
             $table->string('name');
+            $table->string('type')->nullable();
             $table->string('shortdescripcion')->nullable();
             $table->string('largedescription')->nullable();
             $table->string('videourl')->nullable();
+            $table->string('videopreview')->nullable();
             $table->string('videodriver')->nullable();
             $table->timestamps();
         });

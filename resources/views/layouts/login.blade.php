@@ -83,6 +83,10 @@
                       min-width: 450px;
                       padding-top: 10px;
                      }
+
+                     .outer-content{
+                        margin:auto;
+                     }
                   }
 
                   @media screen and (max-height: 550px) and (max-width: 578px)  {
@@ -109,12 +113,9 @@
                      border-radius: 0!important;
                    }
                 }
-
-
-
         </style>
         <div class="outer">
-            <div class="col-sm-8 col-md-6 col-lg-4 outer-content" style="padding: 0; margin: auto">
+            <div class="col-sm-8 col-md-6 col-lg-4 outer-content" style="padding: 0;">
                 @yield('content')
             </div>
         </div>

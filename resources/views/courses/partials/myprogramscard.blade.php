@@ -1,6 +1,7 @@
 <div class="card" style="border:none;box-shadow: 0px 0px 15px 0px rgba(89, 89, 90, 0.6);">
-    <a style="height: 100%" class="stretched-link" href="{{ route('ShowCouseLesson', ['course'=>$course->id]) }}">
-        <img src="{{ URL::asset($course->image) }}" alt="Card image cap" style="width:100%; min-height: 190px;">
+    <a style="height: 100%; background-color: #000" class="stretched-link" href="{{ route('ShowCouseLesson', ['course'=>$course->id]) }}">
+        <img src="{{ $course->image }}" alt="Card image cap" style="width:100%; min-height: 190px;">
+
     </a>
     <div class="card-header text-center">
         <h4 class="card-title mb-0"><a href="/view-course/1">{{ $course->name}}</a></h4>
