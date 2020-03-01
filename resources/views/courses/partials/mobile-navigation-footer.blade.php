@@ -37,7 +37,7 @@
 
 
         <style type="text/css">
-            .mobilepaginatebotton:hover, .mobilepaginatebotton:focus, .mobilepaginatebotton {
+            .mobilepaginatebotton:hover,  .mobilepaginatebotton {
                 text-decoration: none;
                 display: inline-flex;
                 align-items: center;
@@ -50,6 +50,11 @@
                 font-size: .9375rem;
                 line-height: 1.5;
             }
+
+            .mobilepaginatebotton:focus{
+                color: #2196f3;
+            }
+
         </style>
 
          <div class="col">

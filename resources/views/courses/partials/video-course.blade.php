@@ -112,6 +112,12 @@
             margin-left: 6px!important;
         }
 
+        .vjs-menu-content{
+              min-width: 45px!important;
+              overflow-y: hidden!important;
+          }
+
+
     </style>
 
 @endpush
@@ -202,8 +208,24 @@
 
 @push('scripts')
  <script src="https://vjs.zencdn.net/7.6.6/video.js"></script>
+ <script src="http://localhost/js/videojs.persistvolume.js"></script>
+
+
  <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
  <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+
+
+ <script type="text/javascript">
+(function() {
+      var vid1 = videojs('my-video');
+
+
+      console.log(vid1);
+      vid1.persistvolume({
+        namespace: "VideoJs"
+      });
+    })();
+ </script>
 @endpush
 
 

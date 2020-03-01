@@ -373,12 +373,9 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 
 
 
-.select-wrapper input.select-dropdown {
+/*.select-wrapper input.select-dropdown {
   font-size: 17px!important;
 }
-
-
-
 
 
   h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5{
@@ -389,17 +386,13 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
   body{
     font-family: serif;
     font-size: 1em;
-    /*font-family: Sagona-Medium,Georgia,serif;*/
+    //font-family: Sagona-Medium,Georgia,serif;
   }
 
   .sidebar-menu-button {
     font-size: 17px;
-  }
+  }*/
 
-  .vjs-menu-content{
-      min-width: 45px!important;
-      overflow-y: hidden!important;
-  }
 
 
 </style>
@@ -441,49 +434,46 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 
 
 
+                    @if($files->count()>0)
+                      <div class="d-xs-block d-md-none p-1">
+                          <div class="card cardnoborder">
+                              <div class="card-header card-header-noborder">
+                                  <div class="media align-items-center">
 
-                    <div class="d-xs-block d-md-none p-1">
-                        <div class="card cardnoborder">
-                            <div class="card-header card-header-noborder">
-                                <div class="media align-items-center">
+                                      <div class="media-body">
+                                          <h4 class="card-title">RECURSOS</h4>
+                                      </div>
+                                  </div>
+                              </div>
 
-                                    <div class="media-body">
-                                        <h4 class="card-title">RECURSOS</h4>
-                                    </div>
-                                </div>
-                            </div>
+                             <ul class="list-group list-group-fit  mb-0">
 
-                            <ul class="list-group list-group-fit mb-0">
-                                <li class="list-group-item">
-                                    <div class="media">
+                                @foreach($files as $file)
+                                  <li class="list-group-item">
+                                      <div class="media">
 
-                                        <div class="media-left">
-                                            <i  class="fa fa-cloud-download" aria-hidden="true"></i>
-                                        </div>
+                                          <div class="media-left">
+                                              <i  class="fa fa-cloud-download" aria-hidden="true"></i>
+                                          </div>
 
-                                        <div class="media-body">
-                                            <a href="#" style="color: #000"> 1. The MVC architectural pattern</a>
-                                        </div>
+                                          <div class="media-body">
+                                              <a target="_blank" href=" {{ URL::asset($file->path) }}" style="color: #000"> {{ $file->name }}</a>
+                                          </div>
 
 
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="media">
+                                      </div>
+                                  </li>
+                                @endforeach
 
-                                        <div class="media-left">
-                                            <i  class="fa fa-cloud-download" aria-hidden="true"></i>
-                                        </div>
+                              </ul>
 
-                                        <div class="media-body">
-                                            <a href="#" style="color: #000"> 2. The MVC architectural pattern</a>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
 
+
+
+
+                          </div>
+                      </div>
+                    @endif
 
 
 
@@ -721,6 +711,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 
 
 
+                  @if($files->count()>0)
                    <div class="card d-none d-md-none d-lg-block p-1">
                         <div class="cardnoborder">
                             <div class="card-header card-header-noborder">
@@ -751,14 +742,12 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
                                   </li>
                                 @endforeach
 
-
-
                             </ul>
 
 
                         </div>
                     </div>
-
+                  @endif
                 </div>
 
 
@@ -826,6 +815,8 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 
 
     // LOAD URL VIDEO ASINCRONICAMENTE
+
+    /*
         var myvideo =  document.getElementById("myVideo");
         var playasked=0;
         myvideo.onplay = function() {
@@ -848,7 +839,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
         });
 
 
-
+*/
 
     </script>
 
